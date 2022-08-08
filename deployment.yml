@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cons-deployment
+  labels:
+    app: cons-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: cons-app-pod
+      app: demo-cons-app
+  template:
+    metadata:
+      name: cons-app-pod
+      labels:
+        name: cons-app-pod
+        app: demo-cons-app
+
+    spec:
+      containers:
+      - name: cons
+        image: preyz/appfront:latest
+        ports:
+        - containerPort: 80
