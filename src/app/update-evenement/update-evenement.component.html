@@ -1,0 +1,33 @@
+<h3>Mise à jour d'un évènement</h3>
+<div style="width: 400px;">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="name">Titre</label>
+        <input type="text" class="form-control" id="titre" required [(ngModel)]="evenement.titre" name="titre">
+      </div>
+  
+      <div class="form-group">
+        <label for="name">Date du début</label>
+        <input type="text" class="form-control" id="datedebut" required [(ngModel)]="evenement.datedebut" name="datedebut">
+      </div>
+  
+      <div class="form-group">
+        <label for="name">Date de fin</label>
+        <input type="text" class="form-control" id="datefin" required [(ngModel)]="evenement.datefin" name="datefin">
+      </div>
+  
+      <div class="form-group">
+          <label for="name">Description</label>
+          <input type="text" class="form-control" id="description" required [(ngModel)]="evenement.description" name="description">
+        </div>
+  
+        <div class="form-group">
+          <label for="name">Lieu</label>
+          <input type="text" class="form-control" id="lieu" required [(ngModel)]="evenement.lieu" name="lieu">
+        </div>
+
+    <button type="submit" (click)="updateEvenement()" class="btn btn-success">Submit</button>
+    
+  </form>
+</div>
+

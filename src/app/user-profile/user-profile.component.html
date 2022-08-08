@@ -1,0 +1,56 @@
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+
+<div class="container">
+    <div class="row">
+               <div id="custom-search-input">
+                                <div class="input-group col-md-12" style="text-align: center">
+                                    <input type="text" class="search-query form-control" placeholder="Type to search..."  name="ID" [(ngModel)]="searchText"/>
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-danger" type="button" (click)="findEvt()">
+                                            <span class=" glyphicon glyphicon-search"></span>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+    </div>
+    </div>
+<div class="container">
+<div id="htmlData">
+<div class="container">
+    <div class="row col-md-6 col-md-offset-2 custyle">
+    <table class="table table-striped custab">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Titre</th>
+            <th>Date du début</th>
+            <th>Date de la fin</th>
+            <th>Description</th>
+            <th>Lieu</th>
+            <th>Supprimer</th>
+            <th>MàJ</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let evenement of evenements | filter: searchText">
+            <td>{{evenement.idevent}}</td>
+            <td>{{evenement.titre}}</td>
+            <td>{{evenement.datedebut|date:'shortDate'}}</td>
+            <td>{{evenement.datefin|date:'shortDate'}}</td>
+            <td>{{evenement.description}}</td>
+            <td>{{evenement.lieu}}</td>
+            <td class="text-center"><button class="btn btn-danger btn-xs" (click)="delEvt(evenement.idevent)"><span class="glyphicon glyphicon-remove"></span> Delete</button></td>
+            <td class="text-center"> <button class="btn btn-info btn-xs" routerLink="/maj/{{evenement.idevent}}"><span class="glyphicon glyphicon-pencil"></span> Update</button></td>
+          </tr>
+    </tbody>
+    </table>
+    </div>
+</div>
+</div>
+    <div class="pdf">
+    <button type="submit" (click)="openPDF()" class="btn btn-success">Export this table to PDF </button>
+    </div>
